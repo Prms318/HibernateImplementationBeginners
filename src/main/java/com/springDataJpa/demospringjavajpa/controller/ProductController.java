@@ -2,13 +2,17 @@ package com.springDataJpa.demospringjavajpa.controller;
 
 import com.springDataJpa.demospringjavajpa.dto.ProductDTO;
 import com.springDataJpa.demospringjavajpa.entity.Product;
+import com.springDataJpa.demospringjavajpa.exception.ErrorDetails;
+import com.springDataJpa.demospringjavajpa.exception.ResourceNotFoundExcecption;
 import com.springDataJpa.demospringjavajpa.services.ProductService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -37,4 +41,7 @@ public class ProductController {
         List<ProductDTO> productList=productService.getAllProdcts();
         return ResponseEntity.ok(productList);
     }
+
+
+
 }
