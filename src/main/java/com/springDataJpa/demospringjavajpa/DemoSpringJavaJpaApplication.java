@@ -1,11 +1,17 @@
 package com.springDataJpa.demospringjavajpa;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class DemoSpringJavaJpaApplication {
+	@Bean
+public ModelMapper modelMapper(){
+		return new ModelMapper();
 
+}
 	public static void main(String[] args) {
 		SpringApplication.run(DemoSpringJavaJpaApplication.class, args);
 	}
