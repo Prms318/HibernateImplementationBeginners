@@ -29,4 +29,5 @@ public class ProductDTO {
     private LocalDateTime dateCreated;
 
     private  LocalDateTime lastUpdated;
+
 }

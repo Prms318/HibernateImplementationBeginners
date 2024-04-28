@@ -42,6 +42,31 @@ public class ProductController {
         return ResponseEntity.ok(productList);
     }
 
+    //FilterAPI
+//    @GetMapping("/search")
+//    public ResponseEntity<List<ProductDTO>> searchProducts(@RequestParam("query") String query)
+//    {
+//        List<ProductDTO> searchResults = productService.searchProducts(query);
+//        return ResponseEntity.ok(searchResults);
+//    }
 
+@GetMapping("/query")
+    public ResponseEntity<List<Product>> getProductsByQuery(@RequestParam("description")String description)
+{
+    return ResponseEntity.ok(productService.findProductByDescription(description));
+}
+    @GetMapping("/search")
+    public ResponseEntity<List<ProductDTO>> searchProducts(
+            @RequestParam(value = "description", required = false) String description,
+            @RequestParam(value = "name", required = false) String name) {
+        List<ProductDTO> searchResults = productService.searchProducts(description, name);
+        return ResponseEntity.ok(searchResults);
 
+}
+//Count Total numbver of products
+    @GetMapping("/count")
+    public ResponseEntity<Long> getTotalProductCount() {
+        long totalCount = productService.getTotalProductCount();
+        return ResponseEntity.ok(totalCount);
+    }
 }

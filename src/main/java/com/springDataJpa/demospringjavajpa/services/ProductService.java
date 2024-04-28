@@ -11,5 +11,10 @@ public interface ProductService {
 
     List<ProductDTO> getAllProdcts();
 
+   // List<ProductDTO> searchProducts(String query);
+
+  List<Product> findProductByDescription(String description);
     //ProductDTO getAllProduct(List<Product>)
+    List<ProductDTO> searchProducts(String description, String name);
+    long getTotalProductCount();
 }

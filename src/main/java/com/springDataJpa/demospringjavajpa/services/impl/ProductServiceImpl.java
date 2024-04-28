@@ -53,4 +53,30 @@ public class ProductServiceImpl implements ProductService {
         return productsLists.stream().map((product)->modelMapper.map(product,ProductDTO.class))
                 .collect(Collectors.toList());
     }
+
+//    @Override
+//    public List<ProductDTO> searchProducts(String query) {
+//        List<Product> products = productRepository.searchProducts(query);
+//        return products.stream()
+//                .map(product -> modelMapper.map(product, ProductDTO.class))
+//                .collect(Collectors.toList());
+//    }
+
+    @Override
+    public List<Product> findProductByDescription(String description) {
+        return  productRepository.findProductByDescription(description);
+    }
+    @Override
+    public List<ProductDTO> searchProducts(String description, String name) {
+        List<Product> products = productRepository.findProductByDescriptionContainingAndNameContaining(description, name);
+        return products.stream()
+                .map(product -> modelMapper.map(product, ProductDTO.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public long getTotalProductCount() {
+        return productRepository.count();
+    }
+
 }
